@@ -28,7 +28,7 @@ public class Console {
                 }
                 i++;
             }
-            System.out.println(json1);
+            
             for (i = 0; i < key.length; i++) {
                 if (key[i] != null) {
                     System.out.print(key[i]+":");

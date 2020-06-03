@@ -12,8 +12,8 @@ public class Console {
                     (json.indexOf(':') == -1)) throw new InputMismatchException();
 
             String json1 = json.substring(1);
-            String [] key = new String[100];
-            String [] value = new String[100];
+            String [] key = new String[10];
+            String [] value = new String[10];
             int i = 0;
 
             while (!json1.startsWith("}")){
@@ -31,7 +31,7 @@ public class Console {
             System.out.println(json1);
             for (i = 0; i < key.length; i++) {
                 if (key[i] != null) {
-                    System.out.println(key[i]);
+                    System.out.print(key[i]+":");
                     System.out.println(value[i]);
                 }
             }

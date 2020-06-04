@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Service {
+    // get key
     public static ArrayList<String> key (String json){
         ArrayList<String> result = new ArrayList<String>();
         while (!json.startsWith("}")){
@@ -13,6 +14,7 @@ public class Service {
         }
         return result;
     }
+    // get value
     public static ArrayList<String > value(String json){
         ArrayList<String> result = new ArrayList<String>();
         while (!json.startsWith("}")){
@@ -27,5 +29,5 @@ public class Service {
         }
         return result;
     }
-    
+
 }

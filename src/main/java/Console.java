@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,9 +13,7 @@ public class Console {
             String json1 = json.substring(1);
 
             Service str = new Service();
-//            str.key(json1);
-//            System.out.println(str.key(json1));
-//            str.value(json1);
+            System.out.println(str.key(json1));
             System.out.println(str.value(json1));
 
         } catch (InputMismatchException e) {

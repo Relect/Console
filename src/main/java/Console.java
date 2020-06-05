@@ -11,6 +11,8 @@ public class Console {
             if (!json.startsWith("{\"") ||
                     !json.endsWith("\"}") ||
                     (json.indexOf(':') == -1) ||
+                    (json.substring(1,json.lastIndexOf('}')).indexOf("{") != -1) ||
+                    (json.substring(1,json.lastIndexOf('}')).indexOf("}") != -1) ||
                     (json == null)) throw new InputMismatchException();
             String json1 = json.substring(1);
 
@@ -20,7 +22,7 @@ public class Console {
             System.out.println(str.value(json1));
 
         } catch (InputMismatchException e) {
-            System.out.println("JSON должен начинаться с \"{\",  заканчиваться \"}\" и иметь \":\". ");
+            System.out.println("JSON должен начинаться с {\",  заканчиваться \"} и иметь :. ");
         }
 
     }

@@ -1,33 +1,42 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Service {
     // get key
     public static ArrayList<String> key (String json){
         ArrayList<String> result = new ArrayList<String>();
-        while (!json.startsWith("}")){
-            result.add(json.substring(1,json.indexOf(':')-1));
-            if (json.indexOf(',') != -1) {
-                json = json.substring(json.indexOf(',') + 1);
-            } else {
-                json = json.substring(json.indexOf('}'));
+        try {
+            while (!json.startsWith("}")) {
+                if (json.indexOf('\"') != 0 ||
+                        json.substring(json.indexOf(':')-1,json.indexOf(':')) != "\"")
+                {throw new InputMismatchException();
+                break;}
+                result.add(json.substring(1, json.indexOf(':') - 1));
+                if (json.indexOf(',') != -1) {
+                    json = json.substring(json.indexOf(',') + 1);
+                } else {
+                    json = json.substring(json.indexOf('}'));
+                }
             }
+        } catch (InputMismatchException e) {
+        System.out.println("JSON.key должен начинаться с \" и  заканчиваться \":.");
         }
         return result;
     }
     // get value
     public static ArrayList<String > value(String json){
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> res = new ArrayList<String>();
         while (!json.startsWith("}")){
             json = json.substring(json.indexOf(':'));
             if (json.indexOf(',') != -1) {
-                result.add(json.substring(json.indexOf(':') + 2, json.indexOf(',') - 1));
+                res.add(json.substring(json.indexOf(':') + 2, json.indexOf(',') - 1));
                 json = json.substring(json.indexOf(',') + 1);
             } else {
-                result.add(json.substring(json.indexOf(':') + 2, json.indexOf('}') - 1));
+                res.add(json.substring(json.indexOf(':') + 2, json.indexOf('}') - 1));
                 json = json.substring(json.indexOf('}'));
             }
         }
-        return result;
+        return res;
     }
 
 }

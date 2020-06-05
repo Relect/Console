@@ -5,7 +5,6 @@ public class Service {
     // get key
     public static ArrayList<String> key (String json){
         ArrayList<String> result = new ArrayList<String>();
-
             while (!json.startsWith("}")) {
                 try {
                 if (json.indexOf('\"') != 0 ||

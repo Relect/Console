@@ -6,11 +6,9 @@ public class Service {
     public static ArrayList<String> key (String json){
         ArrayList<String> result = new ArrayList<String>();
             while (!json.startsWith("}")) {
-                try {
                 if (json.indexOf('\"') != 0 ||
                     json.substring(json.indexOf(':')-1,json.indexOf(':')) != "\"")
-                throw new InputMismatchException();
-                } catch (InputMismatchException e) {
+                {
                     System.out.println("JSON.key должен начинаться с \" и  заканчиваться \":.");
                     break;
                 }
